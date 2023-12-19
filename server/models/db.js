@@ -1,8 +1,8 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let URI =
-  'mongodb+srv://dashboard:test123@cluster0.qf5sz7q.mongodb.net/?retryWrites=true&w=majority';
+let URI = process.env.MONGO_URI;
 
   // connect to mongoose 
 mongoose
