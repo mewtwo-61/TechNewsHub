@@ -47,11 +47,5 @@ module.exports = {
       open: true,
       hot: true,
       liveReload: true,
-      proxy: {
-        '/api/**': {
-          target: 'http://localhost:3001/',
-          secure: false,
-        },
-      },
   }
 };

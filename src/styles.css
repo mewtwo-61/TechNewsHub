@@ -1,0 +1,24 @@
+/* import google fonts here */
+
+#welcome-header {
+  text-align: center;
+}
+
+
+.signup-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.inner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outlined-required {
+  align-items: center;
+}
