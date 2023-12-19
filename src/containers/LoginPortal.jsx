@@ -15,7 +15,32 @@ const LoginPortal = () => {
   const [password, setPassword] = useState('');
 
   // check if username & password match db by POST req
+  async function checkUser(e) {
+    e.preventDefault();
 
+    try {
+      const result = await fetch(??, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+      const data = result.json();
+      console.log(data);
+      // what do we do here if data is fine
+      
+      // need to redirect to sign up page if login is incorrect
+
+    } catch (err) {
+      console.log('FETCH Error in Login:', err);
+    }
+    
+
+  }
 
   return (
     <div className='login-wrapper'>
