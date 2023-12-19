@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <h1 id='welcome-header'>Welcome to Tech News Hub</h1>
-      <SignUpForm />
+      <LoginPortal />
     </div>
   );
 };

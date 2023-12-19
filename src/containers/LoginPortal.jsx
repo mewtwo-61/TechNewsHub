@@ -18,7 +18,7 @@ const LoginPortal = () => {
 
 
   return (
-    <div className='login-wrapper' >
+    <div className='login-wrapper'>
       <form>
         <InputLabel htmlFor="username">Username</InputLabel>
         <Input
@@ -45,8 +45,11 @@ const LoginPortal = () => {
         placeholder='password'></input> */}
         {/* login button & signup button */}
         <br />
-        <Button type='submit' variant='contained'>Login</Button>
-        <Button variant='outlined'>Sign Up</Button>
+        <br />
+        {/* <div className='login-button'> */}
+          <Button type='submit' variant='contained' className='login-button'>Login</Button>
+          <Button variant='outlined' className='login-button'>Sign Up</Button>
+        {/* </div> */}
         {/* make a 'forgot password' option if time allows */}
       </form>
     </div>

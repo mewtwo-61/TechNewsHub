@@ -4,13 +4,24 @@
   text-align: center;
 }
 
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.login-button {
+  margin: 100px;
+}
 
 .signup-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .inner-container {
