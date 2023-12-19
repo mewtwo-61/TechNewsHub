@@ -15,7 +15,33 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
 
   // POST request on submit to create a new user
+  async function createAccount(e) {
+    e.preventDefault();
 
+    try {
+      const result = await fetch(??, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          firstName: firstName,
+          lastaAme: lastName,
+          username: username,
+          password: password
+        })
+      })
+      const data = result.json();
+      console.log(data);
+      // what do we do here if data is fine
+      
+
+    } catch (err) {
+      console.log('FETCH Error in Sign Up:', err);
+    }
+
+  };
 
   return (
     <div className='signup-wrapper'>
