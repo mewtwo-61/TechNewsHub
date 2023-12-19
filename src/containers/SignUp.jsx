@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -17,17 +18,17 @@ const SignUpForm = () => {
   // POST request on submit to create a new user
   async function createAccount(e) {
     e.preventDefault();
+    const navigate = useNavigate();
 
     try {
-      const result = await fetch(??, {
+      const result = await fetch('/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email: email,
           firstName: firstName,
-          lastaAme: lastName,
+          lastName: lastName,
           username: username,
           password: password
         })
@@ -35,7 +36,7 @@ const SignUpForm = () => {
       const data = result.json();
       console.log(data);
       // what do we do here if data is fine
-      
+      navigate();
 
     } catch (err) {
       console.log('FETCH Error in Sign Up:', err);
@@ -56,14 +57,6 @@ const SignUpForm = () => {
       autoComplete="off"
       >
         <div>
-          <TextField
-            required
-            className="outlined-required"
-            label="Email"
-            placeholder="Email"
-            value={ email }
-          />
-          <br />
           <TextField
             required
             className="outlined-required"

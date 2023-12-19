@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles.css';
 import Button from '@mui/material/Button';
 import { Input, InputLabel } from '@mui/material';
@@ -17,9 +18,10 @@ const LoginPortal = () => {
   // check if username & password match db by POST req
   async function checkUser(e) {
     e.preventDefault();
+    const navigate = useNavigate();
 
     try {
-      const result = await fetch(??, {
+      const result = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,8 +34,11 @@ const LoginPortal = () => {
       const data = result.json();
       console.log(data);
       // what do we do here if data is fine
-      
+      navigate();
       // need to redirect to sign up page if login is incorrect
+      // if (!data.username && !data.password) {
+        
+      // }
 
     } catch (err) {
       console.log('FETCH Error in Login:', err);
