@@ -4,6 +4,7 @@
   text-align: center;
 }
 
+/* Login Portal */
 .login-wrapper {
   display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@
   margin: 100px;
 }
 
+/* Sign Up Form */
 .signup-wrapper {
   display: flex;
   flex-direction: column;
@@ -32,4 +34,16 @@
 
 .outlined-required {
   align-items: center;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add Link Modal */
+.modal-title {
+  text-align: center;
 }
