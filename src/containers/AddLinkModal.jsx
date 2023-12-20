@@ -20,9 +20,33 @@ const style = {
 };
 
 const AddLinkModal = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  // modal click function to open and close
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const [title, setTitle] = useState('');
+  const [source, setSource] = useState('');
+  const [link, setLink] = useState('');
+
+  async function addLink() {
+    try {
+      const result = await fetch('/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          link: link,
+          title: title
+        }
+      });
+      const data = await result.json();
+      console.log('Hooray! You successfully added a link to your dashboard.')
+    } catch (err) {
+      console.error("FETCH Error in addLink:", err);
+    }
+  }
   
     return (
       <div className='add-link'>
@@ -39,10 +63,25 @@ const AddLinkModal = () => {
             </Typography>
             <br />
             <Stack spacing={2}>
-                <TextField className="outlined-basic" label="Title" variant="outlined" />
-                <TextField className="outlined-basic" label="Source" variant="outlined" />
-                <TextField className="outlined-basic" label="Link" variant="outlined" />
-                <Button variant="contained">Done</Button>
+                <TextField 
+                  className="outlined-basic" 
+                  label="Title" 
+                  variant="outlined"
+                  value={ title } 
+                />
+                <TextField 
+                  className="outlined-basic" 
+                  label="Source" 
+                  variant="outlined" 
+                  value={ source }
+                />
+                <TextField 
+                  className="outlined-basic" 
+                  label="Link" 
+                  variant="outlined" 
+                  value={ link }
+                />
+                <Button variant="contained" onClick={ addLink }>Done</Button>
             </Stack>
           </Box>
         </Modal>

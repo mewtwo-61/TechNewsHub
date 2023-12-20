@@ -15,7 +15,7 @@ const LinksContainer = () => {
       const data = await result.json();
       setLinks(data);
     } catch (err) {
-      console.error("FETCH Error in fetchLinks:", err);
+      console.error("FETCH Error in getAllLinks:", err);
     }
 
   }

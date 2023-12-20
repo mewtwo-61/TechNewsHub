@@ -1,4 +1,5 @@
 import React from 'react';
+import Typography from '@mui/material/Typography';
 import LoginPortal from './containers/LoginPortal.jsx';
 import SignUpForm from './containers/SignUp.jsx';
 import MainDashboard from './containers/MainDashboard.jsx';
@@ -6,7 +7,7 @@ import MainDashboard from './containers/MainDashboard.jsx';
 const App = () => {
   return (
     <div>
-      <h1 id='welcome-header'>Welcome to Tech News Hub</h1>
+      <Typography variant='h2' id='welcome-header'>Welcome to Tech News Hub</Typography>
       <MainDashboard />
     </div>
   );
