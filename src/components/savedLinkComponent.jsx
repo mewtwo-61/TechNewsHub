@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ThemeProvider, shadows } from '@mui/system';
+import { Box, ThemeProvider, Shadows } from '@mui/system';
 
 
 const savedLink = ({created_at, title, website, link}) => {
