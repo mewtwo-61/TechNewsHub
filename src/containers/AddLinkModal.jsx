@@ -7,6 +7,7 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -19,29 +20,47 @@ const style = {
   p: 4,
 };
 
+
 const AddLinkModal = () => {
   // modal click function to open and close
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [title, setTitle] = useState('');
-  const [source, setSource] = useState('');
-  const [link, setLink] = useState('');
+  const defaultValues = {
+    title: '',
+    source: '',
+    link: ''
+  };
+
+  // set values in form
+  const [values, setValues] = useState(defaultValues);
+
+  // handle click event for onChange
+  function handleChange(val) {
+    setValues(val);
+  };
+
+
+  // const [title, setTitle] = useState('');
+  // const [source, setSource] = useState('');
+  // const [link, setLink] = useState('');
 
   async function addLink() {
     try {
-      const result = await fetch('/add', {
+      console.log('BODY:', values.link, values.title)
+      const result = await fetch('/api/display/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: {
-          link: link,
-          title: title
-        }
+        body: JSON.stringify({
+          title: values.title,
+          link: values.link,
+        })
       });
       const data = await result.json();
+      handleClose();
       console.log('Hooray! You successfully added a link to your dashboard.')
     } catch (err) {
       console.error("FETCH Error in addLink:", err);
@@ -67,20 +86,30 @@ const AddLinkModal = () => {
                   className="outlined-basic" 
                   label="Title" 
                   variant="outlined"
-                  value={ title } 
+                  value={ values.title }
+                  onChange={(e) =>
+                    handleChange({ ...values, title: e.target.value })
+                  }
                 />
                 <TextField 
                   className="outlined-basic" 
                   label="Source" 
                   variant="outlined" 
-                  value={ source }
+                  value={ values.source }
+                  onChange={(e) =>
+                    handleChange({ ...values, source: e.target.value })
+                  }
                 />
                 <TextField 
                   className="outlined-basic" 
                   label="Link" 
                   variant="outlined" 
-                  value={ link }
+                  value={ values.link }
+                  onChange={(e) =>
+                    handleChange({ ...values, link: e.target.value })
+                  }
                 />
+
                 <Button variant="contained" onClick={ addLink }>Done</Button>
             </Stack>
           </Box>

@@ -11,7 +11,12 @@ const LinksContainer = () => {
   async function getAllLinks() {
 
     try {
-      const result = await fetch();
+      const result = await fetch('/api/display/get', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       const data = await result.json();
       setLinks(data);
     } catch (err) {
@@ -20,10 +25,13 @@ const LinksContainer = () => {
 
   }
 
-  // refresh new data when link is added (what goes in dependency?)
+  // refresh new data when link is added (links goes in dependency?)
   useEffect(() => {
     getAllLinks();
-  }, []);
+  }, [links]);
+
+  // map data to link components and put in list array to put in returned component below
+  
 
   return (
     <div>
