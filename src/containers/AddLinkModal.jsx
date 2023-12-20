@@ -47,20 +47,21 @@ const AddLinkModal = () => {
   // const [source, setSource] = useState('');
   // const [link, setLink] = useState('');
 
-  async function addLink() {
+  const addLink = async (data) => {
     try {
-      console.log('BODY:', values.link, values.title)
-      const result = await fetch('/api/display/add', {
+      console.log('BODY:', data.link, data.title, data.website)
+      const result = await fetch('http://localhost:3020/api/display/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          title: values.title,
-          link: values.link,
-        })
+          link: data.link,
+          title: data.title,
+          website: data.website,
+        }),
+        credentials: 'include',
       });
-      const data = await result.json();
       handleClose();
       console.log('Hooray! You successfully added a link to your dashboard.')
     } catch (err) {
@@ -111,7 +112,7 @@ const AddLinkModal = () => {
                   }
                 />
                 <SelectTags />
-                <Button variant="contained" onClick={ addLink }>Done</Button>
+                <Button variant="contained" onClick={ () => addLink(values) }>Done</Button>
             </Stack>
           </Box>
         </Modal>

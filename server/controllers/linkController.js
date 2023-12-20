@@ -4,14 +4,14 @@ const User = require("../models/userModel");
 const linkController = {
   // Middleware to add a link
   addLink: async (req, res, next) => {
-    if (!req.session.userId) {
-      return res.status(401).send("User not logged in");
-    }
+    // if (!req.session.userId) {
+    //   return res.status(401).send("User not logged in");
+    // }
 
-    const { link, title, created_at } = req.body;
+    const { link, title, website, created_at } = req.body;
 
     try {
-      const newComponent = await Component.create({ link, title, created_at });
+      const newComponent = await Component.create({ link, title, website, created_at });
       await User.findByIdAndUpdate(
         req.session.userId,
         { $push: { links: newComponent._id } },

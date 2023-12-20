@@ -3,6 +3,7 @@ import '../styles.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import savedLink from '../components/savedLinkComponent.jsx';
 
 const LinksContainer = () => {
   const [links, setLinks] = useState([]);
@@ -31,11 +32,13 @@ const LinksContainer = () => {
   }, [links]);
 
   // map data to link components and put in list array to put in returned component below
-  
+  const listOfLinks = links.map(el => {
+    <savedLink />
+  })
 
   return (
     <div>
-
+      { listOfLinks }
     </div>
   );
 }
