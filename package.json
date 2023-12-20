@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "nodemon server/server.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --progress --color & nodemon ./server/server.js"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.1",
     "@mui/material": "^5.15.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
