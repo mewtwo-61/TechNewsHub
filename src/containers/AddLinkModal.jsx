@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import SelectTags from '../components/SelectTags.jsx';
 
 
 const style = {
@@ -29,7 +30,7 @@ const AddLinkModal = () => {
 
   const defaultValues = {
     title: '',
-    source: '',
+    website: '',
     link: ''
   };
 
@@ -93,11 +94,11 @@ const AddLinkModal = () => {
                 />
                 <TextField 
                   className="outlined-basic" 
-                  label="Source" 
+                  label="Website" 
                   variant="outlined" 
-                  value={ values.source }
+                  value={ values.website }
                   onChange={(e) =>
-                    handleChange({ ...values, source: e.target.value })
+                    handleChange({ ...values, website: e.target.value })
                   }
                 />
                 <TextField 
@@ -109,7 +110,7 @@ const AddLinkModal = () => {
                     handleChange({ ...values, link: e.target.value })
                   }
                 />
-
+                <SelectTags />
                 <Button variant="contained" onClick={ addLink }>Done</Button>
             </Stack>
           </Box>
