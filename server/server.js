@@ -4,9 +4,20 @@ const session = require("express-session");
 const router = require("./routes/router");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
+// const connectDB = require("./config/db");
+require("dotenv").config();
 
 const app = express();
-const PORT = 3020;
+const PORT = process.env.EXPRESS_PORT || 3020;
+// connectDB();
+
+app.use(
+  cors({
+    origin: "http://localhost:8080",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 app.use(
   session({
@@ -17,11 +28,20 @@ app.use(
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
     }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      sameSite: "lax",
+    },
   })
 );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// check session
+app.get("/", require("./controllers/sessionController").checkSession);
 
 // directory check
 app.use(express.static(path.resolve(__dirname, "../src"))); // Double check if we will have 'client'
