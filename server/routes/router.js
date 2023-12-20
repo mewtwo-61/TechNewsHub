@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const authRouter = require("./authRouter");
-const displayRouter = require("./displayRouter");
+const displayRouter = require("./linkRouter");
 
 // User auth router
 router.use("/auth", authRouter);
