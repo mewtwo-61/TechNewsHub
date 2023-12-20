@@ -19,6 +19,10 @@ const componentSchema = new Schema({
     type: String,
     required: true
   },
+  website: {
+    type: String,
+    required: true
+  }
   created_at: {
     type: Date,
     default: Date.now
