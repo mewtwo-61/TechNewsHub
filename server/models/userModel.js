@@ -1,24 +1,30 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require("mongoose");
+// const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  username: { 
-    type: String, 
-    required: true, 
-    unique: true 
+  username: {
+    type: String,
+    required: true,
+    unique: true,
   },
-  firstName: { 
-    type: String, 
-    required: true, 
+  firstName: {
+    type: String,
+    required: true,
   },
-  lastName: { 
-    type: String, 
-    required: true, 
+  lastName: {
+    type: String,
+    required: true,
   },
-  password: { 
-    type: String, 
-    required: true 
+  password: {
+    type: String,
+    required: true,
   },
+  components: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Component",
+    },
+  ],
 });
 
 // Hash the password before saving
@@ -34,6 +40,6 @@ const userSchema = new mongoose.Schema({
 //   return bcrypt.compare(password, this.passwordHash);
 // };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
