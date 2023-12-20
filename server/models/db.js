@@ -1,23 +1,23 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let URI = process.env.MONGO_URI;
 
-  // connect to mongoose 
+// connect to mongoose
 mongoose
   .connect(URI)
-  .then(() => console.log('Connected to Mongo DB.'))
+  .then(() => console.log("Connected to Mongo DB."))
   .catch((err) => console.log(err));
 
 const componentSchema = new Schema({
   link: {
     type: String,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   website: {
     type: String,
@@ -25,10 +25,10 @@ const componentSchema = new Schema({
   }
   created_at: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const Component = mongoose.model('component', componentSchema);
+const Component = mongoose.model("component", componentSchema);
 
-module.exports = Component;
+module.exports = { Component };
