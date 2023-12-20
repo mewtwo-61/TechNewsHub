@@ -68,7 +68,7 @@ const SelectTags = () => {
             <MenuItem key={tags} value={tags}>
               <Checkbox
               checked={ checked[i] }
-              onClick={() => handleChecked(i)}
+              onClick={() => handleCheck(i)}
               // checked={defaultTags.indexOf(tags) > -1} 
               />
               <ListItemText primary={tags} />
