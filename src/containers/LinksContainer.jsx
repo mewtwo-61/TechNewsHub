@@ -12,11 +12,12 @@ const LinksContainer = () => {
   async function getAllLinks() {
 
     try {
-      const result = await fetch('/api/display/get', {
+      const result = await fetch('http://localhost:3020/api/display/get', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        credentials: 'include',
       });
       const data = await result.json();
       setLinks(data);

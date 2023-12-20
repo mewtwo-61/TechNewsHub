@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate, useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -40,34 +40,45 @@ const SignUpForm = () => {
     event.preventDefault();
   };
 
+  const navigate = useNavigate();
+  // const history = useHistory();
+
   // POST request on submit to create a new user
-  async function createAccount(e) {
+  const createAccount = async (e, data) => {
     e.preventDefault();
-    const navigate = useNavigate();
 
     try {
-      const result = await fetch('/signup', {
+      const result = await fetch('http://localhost:3020/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          username: username,
-          password: password
-        })
+          firstName: data.firstName,
+          lastName: data.lastName,
+          username: data.username,
+          password: data.password
+        }),
+        credentials: 'include',
       })
-      const data = result.json();
-      console.log(data);
+      // const resp = result.json();
+      // console.log(resp);
       // what do we do here if data is fine
-      navigate();
+      if (status === 200) {
+        // <Navigate to="/dashboard" />
+        // history.push("/dashboard")
+        navigate("/dashboard", { replace: true });
+      }
 
     } catch (err) {
       console.log('FETCH Error in Sign Up:', err);
     }
 
   };
+
+  const submitNewUser = (data) => {
+    createAccount();
+  }
 
   return (
     <div className='signup-wrapper'>
@@ -140,7 +151,7 @@ const SignUpForm = () => {
             }
           />
           <br />
-          <Button type='submit' variant='contained'>Sign Up</Button>
+          <Button type='submit' variant='contained' onClick={ (e) => createAccount(e, form) }>Sign Up</Button>
         </div>
        </Box>
       </div>

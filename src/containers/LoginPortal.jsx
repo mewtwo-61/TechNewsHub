@@ -30,10 +30,16 @@ const LoginPortal = () => {
     setLogin(val);
   };
 
+  const navigate = useNavigate();
+
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   navigate('/signup');
+  // };
+
   // check if username & password match db by POST req
   async function checkUser(e) {
     e.preventDefault();
-    const navigate = useNavigate();
 
     try {
       const result = await fetch('/login', {
@@ -49,7 +55,7 @@ const LoginPortal = () => {
       const data = result.json();
       console.log(data);
       // what do we do here if data is fine
-      navigate();
+      navigate("/dashboard");
       // need to redirect to sign up page if login is incorrect
       // if (!data.username && !data.password) {
         
@@ -99,8 +105,8 @@ const LoginPortal = () => {
         <br />
         <br />
         <Box display="flex" justifyContent="space-between">
-          <Button type='submit' variant='contained' className='login-button'>Login</Button>
-          <Button variant='outlined' className='login-button'>Sign Up</Button>
+          <Button type='submit' variant='contained' className='login-button' onClick={ () => navigate("/dashboard", { replace: true })}  >Login</Button>
+          <Button variant='outlined' className='login-button' onClick={ () => navigate("/signup", { replace: true }) }>Sign Up</Button>
         </Box>
         {/* make a 'forgot password' option if time allows */}
       </form>

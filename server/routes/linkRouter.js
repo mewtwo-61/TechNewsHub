@@ -5,7 +5,7 @@ const linkController = require("../controllers/linkController");
 router
   // Get all items
   .get("/get", linkController.getLink, (req, res) => {
-    return res.status(200).json(res.locals.component);
+    return res.status(200).json(res.locals.components);
   })
 
   // Add item

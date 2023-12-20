@@ -28,9 +28,9 @@ const linkController = {
   // Middleware to get a link
   getLink: async (req, res, next) => {
     try {
-      if (!req.session.userId) {
-        return res.status(401).send("User not logged in");
-      }
+      // if (!req.session.userId) {
+      //   return res.status(401).send("User not logged in");
+      // }
 
       const userId = req.session.userId;
       const componentId = req.params.componentId;
@@ -45,7 +45,8 @@ const linkController = {
       const user = await User.findById(userId).populate(queryOptions).exec();
       res.locals.components = user.components;
 
-      res.locals.component = req.body.component;
+      // res.locals.component = req.body.component;
+
       return next();
     } catch (err) {
       return next(err);
@@ -54,9 +55,9 @@ const linkController = {
 
   // Middleware to delete a link
   deleteLink: async (req, res, next) => {
-    if (!req.session.userId) {
-      return res.status(401).send("User not logged in");
-    }
+    // if (!req.session.userId) {
+    //   return res.status(401).send("User not logged in");
+    // }
 
     const componentId = req.params.componentId;
 
