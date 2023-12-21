@@ -10,11 +10,11 @@ import '../styles.css';
 const MainDashboard = () => {
 
   return (
-    <div>
+    <div className='login-wrapper'>
     {/* <div className='main-container'> */}
       <Typography variant='h2' id='welcome-header'>Welcome to Tech News Hub</Typography>
       <br />
-      <Box display="flex" justifyContent="center">
+      <Box >
         {/* <SearchBar /> */}
         <FilterByTag />
         <AddLinkModal />
