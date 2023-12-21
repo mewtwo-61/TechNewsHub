@@ -22,13 +22,13 @@ const componentSchema = new Schema({
   website: {
     type: String,
     required: true
-  }
+  },
   created_at: {
     type: Date,
     default: Date.now,
   },
 });
 
-const Component = mongoose.model("component", componentSchema);
+const Component = mongoose.model("Component", componentSchema);
 
-module.exports = { Component };
+module.exports = Component;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, ThemeProvider, Shadows } from '@mui/system';
 
 
-const savedLink = (created_at, title, website, link) => {
+const savedLink = ({created_at, title, website, link}) => {
   return (
     <div>
       <Box
@@ -16,7 +16,7 @@ const savedLink = (created_at, title, website, link) => {
       >
         <div>
           <p className='dateDisplay'>{created_at}</p>
-          <p className='titleDisplay'>{title} | {link}</p>
+          <p className='titleDisplay'>{title} | {website}</p>
           <p className='linkDisplay'><a href="url">{link}</a></p>
         </div>
       </Box>
